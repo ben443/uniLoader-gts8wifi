@@ -29,3 +29,15 @@ jobs:
 
     - name: Run build_test.sh
       run: bash .github/workflows/build_test.sh
+
+      env:
+        BUILD_OUTPUT_DIR: build-artifacts
+     
+    #run: bash .github/workflows/build_test.sh
+  
+    - name: Upload build images
+      uses: actions/upload-artifact@v4
+      with:
+        name: uniLoader-build-images
+        path: build-artifacts/
+        if-no-files-found: error
